@@ -42,6 +42,14 @@
     h1 {
       text-align: center;
       margin-bottom: 30px;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 10px;  /* Add padding for spacing */
+    }
+
+    h2{
+      background-color: rgba(0, 0, 0, 0.3);
+      width: fit-content;
+      padding: 10px;  /* Add padding for spacing */
     }
 
     textarea {
@@ -50,7 +58,7 @@
       padding: 10px;
       font-size: 16px;
       border: none;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.75);
       /* Semi-transparent black background */
       color: white;
       /* Text color for better contrast */
@@ -73,6 +81,28 @@
     .log-date {
       border-bottom: 1px solid white;
     }
+    .success-message {
+      color: green;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    /* Scrollbar styles */
+    ::-webkit-scrollbar {
+      width: 5px;  /* Set scrollbar width */
+      background-color: rgba(0, 0, 0, 0.2);  /* Set background color with transparency */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(58, 57, 57, 0.5);  /* Set thumb color with transparency */
+    }
+    .image-credit {
+      position: absolute;  /* Position the credit text */
+      bottom: 10px;  /* Adjust positioning as needed */
+      right: 10px;
+      font-size: 12px;
+      color: white;
+      opacity: 0.7;  /* Semi-transparent text */
+    }
   </style>
 </head>
 
@@ -89,6 +119,9 @@
     </div>
     <div class="content">
       <h1>Welcome to the Captain's Log portal, Enter your log message below!</h1>
+      {% if success_message %}
+        <p class="success-message">{{ success_message }}</p>
+      {% endif %}
       <h2>Captain's Log</h2>
       <form action="{% url 'create_log' %}" method="post">
         {% csrf_token %}
@@ -97,6 +130,11 @@
         <button type="submit">Submit Log</button>
       </form>
     </div>
+  </div>
+  <div class="image-credit">
+    Background image <br> 
+    Credit: NASA image release April 22, 2010 <br>
+    NASA ID: GSFC_20171208_Archive_e002076
   </div>
 </body>
 

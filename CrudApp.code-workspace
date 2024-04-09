@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../../CSC340-IngredientIntel/CSC340-IngredientIntel/.venv"
 		}
 	]
 }
