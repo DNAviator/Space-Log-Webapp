@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captain's Log</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background-image: url('{% static "Crud/images/space.jpg" %}');
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100vh;
+      color: white;
+      /* Text color for better contrast */
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 20%;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent black background */
+      overflow-y: auto;
+      /* Add this line for scrolling */
+      height: calc(100vh - 40px);
+      /* Adjust height to account for padding */
+    }
+
+    .content {
+      flex: 1;
+      padding: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      background-color: rgba(0, 0, 0, 0.3);
+      /* Semi-transparent black background */
+      color: white;
+      /* Text color for better contrast */
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .log-entry {
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+    .log-date {
+      border-bottom: 1px solid white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Previous Logs</h2>
+      {% for log in all_logs %}
+      <div class="log-entry">
+        <div class="log-date">Star Date: {{ log.date_created|date:"Y-m-d H:i" }} </div> <br>
+        {{ log.Log }} <br>
+      </div>  
+      {% endfor %}
+    </div>
+    <div class="content">
+      <h1>Welcome to the Captain's Log portal, Enter your log message below!</h1>
+      <h2>Captain's Log</h2>
+      <form action="{% url 'create_log' %}" method="post">
+        {% csrf_token %}
+        <textarea name="log" cols="50" rows="10" placeholder="Enter your log entry..."></textarea>
+        <br>
+        <button type="submit">Submit Log</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
