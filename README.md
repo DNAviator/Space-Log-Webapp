@@ -13,7 +13,7 @@
     - Python can be downloaded at https://www.python.org/downloads/ (The code is run on 3.12.2 but should run on any python 3)
  3. Verify your python has django installed as a package (I personally use a venv)
     - To install django in your console run: pip install django
- 4. After you have your environment setup navigate in the consol to the CrudApp directory with cd .\CrudApp\ (assuming you are already in the project directory)
+ 4. After you have your environment setup navigate in the console to the CrudApp directory with cd .\CrudApp\ (assuming you are already in the project directory where the repository was cloned)
  5. Once in the directory run the code: python manage.py runserver (optionally port number can be added here)
  6. The terminal should provide a link to the running webserver or it should be able to be found at localhost:8000 (or the specified port)
 
